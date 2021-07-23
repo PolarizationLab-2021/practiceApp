@@ -59,8 +59,8 @@ How I want this to work for now:
                 querySnapshot.forEach(doc => { 
                      const conversation  = doc.data(); 
                      conversation.id = doc.id;
-                     const checkId=(identification, array)=>{
-                         const contains = false;
+                     const checkId=(identification, array)=>{ 
+                         const contains = false;//this function checks if a specific conversation is already in the array to avoid duplicates when we chat with ourselves
                          array.forEach((document)=>{
                              if(document.id == identification){
                                  contains = true;
@@ -68,13 +68,12 @@ How I want this to work for now:
                          })
                          return contains;
                      }
-                     if(!checkId(conversation.id, newConversations) === true){
+                     if(!checkId(conversation.id, newConversations) === true){ //the above checkId function is utilized here
                      newConversations.push(conversation);
                      }
                 })
-               // alert(oldConversations.length) //currently, oldConversations has 0 length despite conversations that match our criteria existing.
                 //setConversations(oldConversations);
-                setConversations(newConversations) //spread syntax allows us to update the state with each for loop iteration
+                setConversations(newConversations) 
                  //alert(conversations.length);
             }, error => {
                 alert(error);
@@ -237,9 +236,9 @@ How I want this to work for now:
                     <View style={styles.listContainer}>
                          <FlatList //neeeded to render each element in the list. We probably could have used a for loop as well. 
                         data={conversations}
-                        renderItem={renderConversation}
-                        keyExtractor={(item) => item.id}
-                        removeClippedSubviews={true}
+                        renderItem={renderConversation} //this is called to render each item in the list
+                        keyExtractor={(item) => item.id} //this comes from the HomeScreen template. It has something to do with indexing
+                        removeClippedSubviews={true} // also came from the homescreen template
                      />
                      </View> )}
                 </View>

@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     formContainer: {
         flexDirection: 'row',
-        height: 80,
+        height: 80, // consider commenting out height for better results?
         marginTop: 40,
         marginBottom: 20,
         flex: 1,
