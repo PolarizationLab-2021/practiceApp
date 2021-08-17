@@ -41,7 +41,7 @@ export function signOut(){
           alert(error)
         })
 }
-export function signUp(fullName, email, password){
+export function signUp(username, email, password){
     firebase
           .auth() //the authorization library in firebase
           .createUserWithEmailAndPassword(email, password) // a promise that resolves upon doing what it says it will.
